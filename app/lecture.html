@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="lectureApp">
+
+<head>
+    <title>Interactive Lecture</title>
+    <meta charset="utf-8">
+    <!--<link rel="stylesheet" type="text/css" href="css/font-awesome.css">-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/mdb.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.js"></script>
+    <script src="js/bootstrap/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="js/bootstrap/mdb.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/dashboardController.js"></script>
+    <script src="js/controllers/lectureService.js"></script>
+</head>
+<body ng-controller="dashboardController as platform">
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect" href="#">Overview
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/"
+                           target="_blank">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/"
+                           target="_blank">Q&A</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="sidebar-fixed position-fixed">
+        <a class="logo-wrapper">
+            <img src="http://gleichstellung.uni-saarland.de/fileadmin/Template/UdS-Logo.jpg" alt="">
+        </a>
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item active waves-effect">
+                <i class="fa fa-pie-chart mr-3"></i>Overview
+            </a>
+            <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-user mr-3"></i>Chat</a>
+            <a href="#" class="list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-table mr-3"></i>Q&A</a>
+        </div>
+    </div>
+</header>
+<div id="lectureBox">
+    <main class="pt-5 mx-lg-5">
+        <div class="container-fluid">
+            <div class="card mb-4 fadeIn">
+                <div class="card-body d-sm-flex justify-content-between">
+                    <h4 class="mb-2 mb-sm-0 pt-2">
+                        <a href="lecture.html">{{platform.lecture}}</a>
+                        <span>/</span>
+                        <a href="lecture.html">Overview</a>
+                    </h4>
+
+                    <h3 class="mb-2 mb-sm-0 pt-2" id="platform-student-name">Welcome {{platform.username}}!</h3><br>
+                    <button class="btn btn-primary mb-2 mb-sm-0 pt-2" ng-click="platform.logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="loading-screen" ng-show="platform.isLoading">
+            <div class="spinner"></div>
+            <h1>Loading...</h1>
+        </div>
+
+        <div id="login-screen" ng-show="!platform.isLoggedIn">
+            <h1>Login...</h1>
+            <div id="loginBox">
+                <label for="login-user-name">Student Username</label><br>
+                <input type="text" id="login-user-name" ng-model="platform.username"><br><br>
+                <button class="btn btn-primary" id="loginBtn" type="submit" ng-click="platform.register()"
+                        value="Login">Login
+                </button>
+            </div>
+        </div>
+
+        <div id="searchResult">
+            <h3>Results ({{platform.studentsFound.length}})</h3>
+            <div class="result" ng-class="{'gray':($index % 2)}" ng-repeat="result in platform.charactersFound">
+                <p>Name:<br><b>{{result.name}}</b></p>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+
+<footer>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.js"></script>
+    <script src="js/bootstrap/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="js/bootstrap/mdb.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/dashboardController.js"></script>
+    <script src="js/controllers/lectureService.js"></script>
+</footer>
+
+</html>
