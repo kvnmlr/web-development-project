@@ -83,7 +83,7 @@ lectureApp.controller('dashboardController', ['lectureService', '$cookies', '$lo
             $log.debug('Logged out user ' + self.username + ' with ID ' + self.userID);
             self.username = undefined;
             self.isLoggedIn = false;
-            $window.location.href = 'index.html';
+            //$window.location.href = 'index.html';
         };
 
         self.chooseLecture = function (lecture) {

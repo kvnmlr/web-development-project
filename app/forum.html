@@ -30,6 +30,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+
                     <li class="nav-item active">
                         <a class="nav-link waves-effect" href="lecture.html">Live Section
                             <span class="sr-only">(current)</span>
@@ -54,17 +55,13 @@
             <img src="http://gleichstellung.uni-saarland.de/fileadmin/Template/UdS-Logo.jpg" alt="">
         </a>
         <div class="list-group list-group-flush">
-            <h4 id="platform-student-name" ng-if="platform.isLoggedIn">Welcome {{platform.username}}!</h4>
-            <h4 ng-if="!platform.isLoggedIn">Please Log In</h4>
-            <br>
+            <h4 id="platform-student-name">Welcome {{platform.username}}!</h4><br>
+            <button class="btn btn-outline-primary" ng-click="platform.logout()" style="margin-bottom: 50px">Logout</button>
 
-            <button class="btn btn-outline-primary" ng-click="platform.logout()" style="margin-bottom: 50px">Logout
-            </button>
-
-            <a href="lecture.html" class="list-group-item active waves-effect">
+            <a href="lecture.html" class="list-group-item waves-effect">
                 <i class="fa fa-pie-chart mr-3"></i>Live Section
             </a>
-            <a href="forum.html" class="list-group-item waves-effect">
+            <a href="forum.html" class="list-group-item active waves-effect">
                 <i class="fa fa-user mr-3"></i>Q&A Forum</a>
             <a href="index.html" class="list-group-item waves-effect">
                 <i class="fa fa-table mr-3"></i>Lecture List</a>
@@ -78,6 +75,7 @@
             <div class="col-sm-2"></div>
         </div>
         <br>
+
 
         <div id="loading-screen" ng-show="platform.isLoading">
             <div class="spinner"></div>
@@ -96,43 +94,9 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-6" style="height: 400px;">
-                <div class="row">
-                    <div class="col-sm-12 card" id="liveStream" style="height: 400px;">
-                        <h3>Live Stream</h3>
-                        <iframe height="100%" src="https://www.youtube.com/embed/XQs5KcUj-Do"></iframe>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm-12 card" id="moodVisualization" style="height: 200px;">
-                        <h3>Mood</h3>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <b>4 </b>Dissatisfied<br>
-                                <img src="img/smiley_sad.png" alt="Smiley face" height="42" width="42">
-                            </div>
-                            <div class="col-sm-4">
-                                <b>13 </b>Neutral<br>
-                                <img src="img/smiley_neutral.png" alt="Smiley face" height="67" width="67">
-                            </div>
-                            <div class="col-sm-4">
-                                <b>34 </b>Satisfied<br>
-                                <img src="img/smiley_happy.png" alt="Smiley face" height="98" width="98">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="col-sm-12 card" id="forum" style="height: 500px;">
+                <h3>Q&A</h3>
             </div>
-            <div class="col-sm-1"></div>
-            <div class="col-sm-5 card" id="liveChat" style="height: 625px;">
-                <h3>Chat</h3>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-
         </div>
     </main>
 </div>
